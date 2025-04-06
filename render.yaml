@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: task-manager-backend
+    env: go
+    buildCommand: cd backend && go build -o main ./cmd/main.go
+    startCommand: cd backend && ./main
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: https://task-manager-frontend.onrender.com
+    databases:
+      - name: task_manager_db
+        databaseName: task_manager
+        user: task_manager
+
+  - type: web
+    name: task-manager-frontend
+    env: node
+    buildCommand: cd frontend && npm install && npm run build
+    startCommand: cd frontend && npm start
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://task-manager-backend.onrender.com/api 
