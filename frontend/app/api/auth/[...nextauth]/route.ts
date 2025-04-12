@@ -7,6 +7,7 @@ import { Session } from "next-auth";
 
 const users = new Map();
 
+//User Auth
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
