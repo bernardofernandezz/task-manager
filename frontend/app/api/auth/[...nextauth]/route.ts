@@ -7,8 +7,9 @@ import { Session } from "next-auth";
 
 const users = new Map();
 
-//User Auth
+//User Auth component
 export const authOptions: NextAuthOptions = {
+//Provide Google Auth
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "",
